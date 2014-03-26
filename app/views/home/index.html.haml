@@ -1,0 +1,36 @@
+.front
+  .page
+    .header
+      .container
+        = image_tag asset_path 'logo.png'
+
+    .main
+      .container
+        .row
+          .col-sm-12
+
+            - unless flash[:notice].blank?
+              %h4.notice= flash[:notice]
+
+            %h1 Zapisy na wydarzenia w ramach ODPP:
+            .list-group
+              - for event in @main_events
+                %a{:href=>"#", :class=>"list-group-item", :data=>{:toggle=>'modal', :target=>"#event_#{event.id}"}}
+                  %h4.list-group-item-heading= event.name
+                  %p.list-group-item-text= event.description
+
+            %h3 a oprócz nich:
+            .list-group
+              - for event in @additional_events
+                %a{:href=>"#", :class=>"list-group-item", :data=>{:toggle=>'modal', :target=>"#event_#{event.id}"}}
+                  %h4.list-group-item-heading= event.name
+                  %p.list-group-item-text= event.description
+
+  - for event in @main_events + @additional_events
+    = render :partial => 'events/modal', :locals => {event: event}
+
+  .footer
+    .container
+      .row
+        .col-sm-12
+          %p.text-center Po zapisaniu się na wydarzenie zostanie wysłany mail z potwierdzeniem.

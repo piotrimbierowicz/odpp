@@ -1,0 +1,9 @@
+= f.hidden_field :event_id, :value => event.id
+.form-group
+  = f.text_field :first_name, :class => 'form-control', :placeholder => 'Imię (wymagane)', :required => 'true'
+.form-group
+  = f.text_field :last_name, :class => 'form-control', :placeholder => 'Nazwisko (wymagane)', :required => 'true'
+.form-group
+  = f.text_field :email, :class => 'form-control', :placeholder => 'E-mail (wymagane)', :required => 'true'
+.form-group
+  = f.text_field :phone_number, :class => 'form-control', :placeholder => 'Numer telefonu'

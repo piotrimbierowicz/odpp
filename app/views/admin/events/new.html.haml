@@ -1,0 +1,8 @@
+.container
+  %h3 Nowe wydarzenie
+  = form_for [:admin, @event] do |f|
+    = render :partial => 'admin/events/form', :locals => {f: f}
+
+    .form-group
+      = f.submit 'Zapisz', :class => 'btn btn-primary'
+

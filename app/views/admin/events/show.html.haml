@@ -1,0 +1,19 @@
+.container
+
+  %p
+    = link_to 'Powrót do listy wydarzeń', admin_root_path
+
+  %h3= "Wydarzenia / #{@event.name}"
+  %table.table
+    %tbody
+      - for participant in @event.participants.order('created_at asc')
+        %tr
+          %td
+            = participant.first_name
+            = participant.last_name
+          %td
+            = participant.email
+          %td
+            = participant.phone_number
+          %td
+            = participant.created_at.strftime('%d %B %Y %H:%m')

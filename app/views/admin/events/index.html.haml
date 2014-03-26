@@ -1,0 +1,18 @@
+.container
+
+  %h3 Lista wydarzeń
+  %table.table
+    %tbody
+      - for event in @events
+        %tr
+          %td= event.participants.size
+          %td= link_to event.name, [:admin, event]
+          %td= event.description
+          %td
+          %td.text-right.nowrap
+            = link_to 'Lista', [:admin, event], :class => 'btn btn-primary btn-sm'
+            = link_to 'Edytuj', edit_admin_event_path(event), :class => 'btn btn-sm btn-warning'
+            = link_to 'Usuń', [:admin, event], :class => 'btn btn-danger btn-sm', :method => 'delete', :confirm => 'Jesteś pewien?'
+
+  %p
+    = link_to 'Nowe wydarzenie', new_admin_event_path, :class => 'btn btn-primary'

@@ -13,3 +13,21 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+
+
+$(document).ready(function(){
+    function fitPage() {
+        $('.footer').css('top', '0');
+        var wh = $(window).height();
+        var dh = $('.footer').offset().top + $('.footer').outerHeight();
+        if((wh - dh) > 0) {
+            $('.footer').css('top', wh - dh);
+        }
+
+    }
+
+    fitPage();
+    $(window).load(function() { fitPage(); });
+    $(window).resize(function() { fitPage(); });
+
+});
